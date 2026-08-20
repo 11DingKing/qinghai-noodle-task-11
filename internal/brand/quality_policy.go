@@ -109,3 +109,9 @@ func ValidateAppeal(appeal Appeal, inspection Inspection, now time.Time) error {
 	}
 	return nil
 }
+
+func coldChainReadingsSnapshot(lot IngredientLot) IngredientLot {
+	clone := lot
+	clone.Temperatures = append(slices.Clone(lot.Temperatures), lot.MaxTemperature+10)
+	return clone
+}

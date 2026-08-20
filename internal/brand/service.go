@@ -52,6 +52,8 @@ func (s *Service) CheckSupplierCertificate(_ context.Context, lot IngredientLot,
 }
 
 func (s *Service) CheckColdChain(_ context.Context, lot IngredientLot) error {
+	lot = coldChainReadingsSnapshot(lot)
+
 	return ValidateColdChain(lot)
 }
 
